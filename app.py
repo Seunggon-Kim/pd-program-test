@@ -37,10 +37,44 @@ server = app.server
 
 # 설명 레이어 (레이어 0)
 layer0_layout = html.Div([
-    html.H1("Plate Discipline 유사도 분석 개요"),
-    html.P("이 애플리케이션은 타자와 투수의 Plate Discipline 유사도 분석을 제공합니다."),
-    html.P("검색 창에서 타자와 투수 그리고 연도를 입력하면 유클리드 거리에 기반한 해당 선수와 유사한 선수들의 시각화 자료를 제공합니다. "
-           "시각화 자료로는 가장 유사한 5명의 선수, 타자/투수별 스탯 백분위수 순위, 검색 시즌 평균과의 차이, 유클리드 거리별로 정렬된 선수 산점도가 있습니다."),
+    html.H1("Plate Discipline 유사도 프로그램"),
+    html.P("안녕하세요, Plate Discipline 유사도 프로그램을 방문해주셔서 감사합니다."),
+    
+    html.P("해당 프로그램은 타자와 투수의 이름을 입력하면 유클리드 거리에 기반해서 입력한 선수와 유사한 선수들을 확인하실 수 있습니다."),
+    
+    html.H2("Plate Discipline이란?"),
+    html.P("타자가 타석에서 스트라이크존을 빠르게 파악하고, 침착하게 대응하는 능력을 뜻합니다. "
+           "플레이트 디서플린은 타석에서 적응력과 참을성, 좋지 않은 공을 거를 수 있는 능력입니다. "
+           "우열을 가리기보다는 타자의 캐릭터에 가까운 지표라고 볼 수 있습니다."),
+    
+    html.H2("유클리드 거리란?"),
+    html.P("유클리드 거리는 두 점 사이의 직선 거리를 계산하는 방법으로, 두 점 간의 좌표 차이를 제곱하여 합산하고, 그 합의 제곱근을 구하는 방식으로 계산됩니다. "
+           "이 프로그램에서는 선수의 Plate Discipline 지표들을 각각의 좌표로 간주하여 유클리드 거리를 계산하며, 이를 통해 두 선수의 유사성을 측정합니다. "
+           "유클리드 거리가 짧을수록 두 선수의 Plate Discipline 특성이 유사하다고 해석할 수 있습니다."),
+    
+    html.H2("유사도 계산에 사용된 지표, 계산 방법"),
+    html.Table([
+        html.Thead([
+            html.Tr([
+                html.Th("지표"), html.Th("계산식"), html.Th("비고"),
+                html.Th("타자 유사도 분석 포함 여부"), html.Th("투수 유사도 분석 포함 여부")
+            ])
+        ]),
+        html.Tbody([
+            html.Tr([html.Td("O-Swing%"), html.Td("존 밖의 투구 스윙 / 존 밖의 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
+            html.Tr([html.Td("Z-Swing%"), html.Td("존 안의 투구 스윙 / 존 안의 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
+            html.Tr([html.Td("Swing%"), html.Td("스윙 / 전체 투구"), html.Td(""), html.Td("O"), html.Td("O")]),
+            html.Tr([html.Td("Zone%"), html.Td("스트라이크 존 내의 투구 수 / 총 투구 수"), html.Td("유사도 분석에서는 포함하지 않음"), html.Td("X"), html.Td("X")]),
+            html.Tr([html.Td("O-Contact%"), html.Td("존 밖의 투구에 컨텍한 투구 수 / 존 밖의 투구에 스윙한 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
+            html.Tr([html.Td("Z-Contact%"), html.Td("존 안의 투구에 컨텍한 투구 수 / 존 안의 투구에 스윙한 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
+            html.Tr([html.Td("Contact%"), html.Td("컨텍한 투구 수 / 스윙한 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
+            html.Tr([html.Td("First Pitch Swing%"), html.Td("첫 번째 투구에 스윙한 투구 수 / 첫 번째 투구 수"), html.Td("타자 유사도 분석에서만 사용"), html.Td("O"), html.Td("X")]),
+            html.Tr([html.Td("First Pitch Strike%"), html.Td("첫 번째 투구가 스트라이크인 투구 수 / 첫 번째 투구 수"), html.Td("투수 유사도 분석에서만 사용"), html.Td("X"), html.Td("O")]),
+            html.Tr([html.Td("SwStr%"), html.Td("헛스윙 / 총 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
+            html.Tr([html.Td("Cstr%"), html.Td("콜 스트라이크 / 총 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
+            html.Tr([html.Td("Csw%"), html.Td("헛스윙+콜 스트라이크 / 총 투구 수"), html.Td("SwStr%과 Cstr%를 합치면 Csw%입니다."), html.Td("O"), html.Td("O")])
+        ])
+    ])
 ])
 
 # 1번 프로그램 레이아웃 (타자 유사도 분석)
