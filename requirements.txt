@@ -5,5 +5,4 @@ scipy==1.13.1
 matplotlib==3.9.2
 numpy==1.26.4
 seaborn==0.13.2
-dash-html-components==2.0.18
 dash-core-components==2.14.1
