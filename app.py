@@ -464,8 +464,8 @@ def display_table_for_batters(similar_batters_top5):
 
     # Plotly 표 생성
     fig = go.Figure(data=[go.Table(
-        header=dict(values=formatted_columns, fill_color='paleturquoise', align='center', height=40, font=dict(size=14)),
-        cells=dict(values=[table_df[col] for col in table_df.columns], fill_color='white', align='center', height=40, font=dict(size=12))
+        header=dict(values=formatted_columns, fill_color='paleturquoise', align='center', height=40, font=dict(size=12)),
+        cells=dict(values=[table_df[col] for col in table_df.columns], fill_color='white', align='center', height=40, font=dict(size=10))
     )])
 
     fig.update_layout(
@@ -474,14 +474,7 @@ def display_table_for_batters(similar_batters_top5):
         title=f"{game_year} Season {batter_name}<br>Top 5 Plate Discipline Similar Batters",
         title_x=0,
         title_xanchor='left',
-        title_font=dict(size=20, family='Arial', color='black'),
-        autosize=True,
-        # 스크롤을 가능하게 하고 폭을 조절하는 부분
-        xaxis=dict(
-            automargin=True,
-            zeroline=False,
-            showgrid=False
-        ),
+        title_font=dict(size=20, family='Arial', color='black')
     )
 
     return fig
