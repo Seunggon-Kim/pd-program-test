@@ -16,9 +16,9 @@ import warnings
 # 경고 무시 설정
 warnings.filterwarnings('ignore')
 
-result_df = pd.read_csv('result_df.csv')
-result_df_p = pd.read_csv('result_df_p.csv')
-df_swing_table_all = pd.read_csv('df_swing_table_all.csv')
+result_df = pd.read_csv('datas/result_df.csv')
+result_df_p = pd.read_csv('datas/result_df_p.csv')
+df_swing_table_all = pd.read_csv('datas/df_swing_table_all.csv')
 
 pd.set_option('display.max_columns', None)
 
