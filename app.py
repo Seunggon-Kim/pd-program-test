@@ -37,6 +37,9 @@ app.title = ('Dashboard | Plate Discipline')
 server = app.server
 
 # 설명 레이어 (레이어 0)
+from dash import dcc, html
+from dash.dash_table import DataTable
+
 layer0_layout = html.Div([
     html.H1("Plate Discipline 유사도 프로그램", style={'margin-bottom': '20px'}),
     html.P("안녕하세요, Plate Discipline 유사도 프로그램을 방문해주셔서 감사합니다.", style={'margin-bottom': '20px'}),
@@ -85,10 +88,15 @@ layer0_layout = html.Div([
         style_table={'width': '100%', 'margin': 'auto', 'margin-bottom': '30px'}
     ),
     
-    html.P("데이터는 Baseball Savant의 PBP 데이터를 사용했습니다. 따라서 Baseball Savant에서 보는 선수의 데이터와 약간의 차이가 있을 수 있습니다. "
-           "PBP 데이터에는 자동고의4구가 없고, Savant의 존 설정이 어떤지 확인할 수 없기 때문입니다. "
-           "스트라이크 존 설정은 [이 차트](https://tangotiger.net/strikezone/zone%20chart.png)를 참고했습니다.",
-           style={'margin-top': '30px', 'margin-bottom': '30px'})
+    dcc.Markdown(
+        """
+        데이터는 Baseball Savant의 PBP 데이터를 사용했습니다. 따라서 Baseball Savant에서 보는 선수의 데이터와 약간의 차이가 있을 수 있습니다. 
+        PBP 데이터에는 자동고의4구가 없고, 존 설정이 어떤지 확인할 수 없기 때문입니다.
+
+        스트라이크 존 설정은 [이 곳](https://tangotiger.net/strikezone/zone%20chart.png)을 참고했습니다.
+        """,
+        style={'margin-top': '30px', 'margin-bottom': '30px'}
+    )
 ])
 
 # 1번 프로그램 레이아웃 (타자 유사도 분석)
