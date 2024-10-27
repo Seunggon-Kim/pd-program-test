@@ -25,6 +25,7 @@ pd.set_option('display.max_columns', None)
 import dash
 import math
 from dash import dcc, html, Input, Output, no_update
+from dash.dash_table import DataTable
 import pandas as pd
 import plotly.graph_objects as go
 import scipy
@@ -53,28 +54,36 @@ layer0_layout = html.Div([
            "유클리드 거리가 짧을수록 두 선수의 Plate Discipline 특성이 유사하다고 해석할 수 있습니다."),
     
     html.H2("유사도 계산에 사용된 지표, 계산 방법"),
-    html.Table([
-        html.Thead([
-            html.Tr([
-                html.Th("지표"), html.Th("계산식"), html.Th("비고"),
-                html.Th("타자 유사도 분석 포함 여부"), html.Th("투수 유사도 분석 포함 여부")
-            ])
-        ]),
-        html.Tbody([
-            html.Tr([html.Td("O-Swing%"), html.Td("존 밖의 투구 스윙 / 존 밖의 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
-            html.Tr([html.Td("Z-Swing%"), html.Td("존 안의 투구 스윙 / 존 안의 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
-            html.Tr([html.Td("Swing%"), html.Td("스윙 / 전체 투구"), html.Td(""), html.Td("O"), html.Td("O")]),
-            html.Tr([html.Td("Zone%"), html.Td("스트라이크 존 내의 투구 수 / 총 투구 수"), html.Td("유사도 분석에서는 포함하지 않음"), html.Td("X"), html.Td("X")]),
-            html.Tr([html.Td("O-Contact%"), html.Td("존 밖의 투구에 컨텍한 투구 수 / 존 밖의 투구에 스윙한 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
-            html.Tr([html.Td("Z-Contact%"), html.Td("존 안의 투구에 컨텍한 투구 수 / 존 안의 투구에 스윙한 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
-            html.Tr([html.Td("Contact%"), html.Td("컨텍한 투구 수 / 스윙한 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
-            html.Tr([html.Td("First Pitch Swing%"), html.Td("첫 번째 투구에 스윙한 투구 수 / 첫 번째 투구 수"), html.Td("타자 유사도 분석에서만 사용"), html.Td("O"), html.Td("X")]),
-            html.Tr([html.Td("First Pitch Strike%"), html.Td("첫 번째 투구가 스트라이크인 투구 수 / 첫 번째 투구 수"), html.Td("투수 유사도 분석에서만 사용"), html.Td("X"), html.Td("O")]),
-            html.Tr([html.Td("SwStr%"), html.Td("헛스윙 / 총 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
-            html.Tr([html.Td("Cstr%"), html.Td("콜 스트라이크 / 총 투구 수"), html.Td(""), html.Td("O"), html.Td("O")]),
-            html.Tr([html.Td("Csw%"), html.Td("헛스윙+콜 스트라이크 / 총 투구 수"), html.Td("SwStr%과 Cstr%를 합치면 Csw%입니다."), html.Td("O"), html.Td("O")])
-        ])
-    ])
+    
+    DataTable(
+        columns=[
+            {"name": "지표", "id": "metric"},
+            {"name": "계산식", "id": "formula"},
+            {"name": "비고", "id": "note"},
+            {"name": "타자 유사도 분석 포함 여부", "id": "batter_inclusion"},
+            {"name": "투수 유사도 분석 포함 여부", "id": "pitcher_inclusion"}
+        ],
+        data=[
+            {"metric": "O-Swing%", "formula": "존 밖의 투구 스윙 / 존 밖의 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "Z-Swing%", "formula": "존 안의 투구 스윙 / 존 안의 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "Swing%", "formula": "스윙 / 전체 투구", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "Zone%", "formula": "스트라이크 존 내의 투구 수 / 총 투구 수", "note": "유사도 분석에서는 포함하지 않음", "batter_inclusion": "X", "pitcher_inclusion": "X"},
+            {"metric": "O-Contact%", "formula": "존 밖의 투구에 컨텍한 투구 수 / 존 밖의 투구에 스윙한 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "Z-Contact%", "formula": "존 안의 투구에 컨텍한 투구 수 / 존 안의 투구에 스윙한 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "Contact%", "formula": "컨텍한 투구 수 / 스윙한 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "First Pitch Swing%", "formula": "첫 번째 투구에 스윙한 투구 수 / 첫 번째 투구 수", "note": "타자 유사도 분석에서만 사용", "batter_inclusion": "O", "pitcher_inclusion": "X"},
+            {"metric": "First Pitch Strike%", "formula": "첫 번째 투구가 스트라이크인 투구 수 / 첫 번째 투구 수", "note": "투수 유사도 분석에서만 사용", "batter_inclusion": "X", "pitcher_inclusion": "O"},
+            {"metric": "SwStr%", "formula": "헛스윙 / 총 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "Cstr%", "formula": "콜 스트라이크 / 총 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "Csw%", "formula": "헛스윙+콜 스트라이크 / 총 투구 수", "note": "SwStr%과 Cstr%를 합치면 Csw%입니다.", "batter_inclusion": "O", "pitcher_inclusion": "O"}
+        ],
+        style_cell={'textAlign': 'center'},
+        style_header={
+            'fontWeight': 'bold',
+            'backgroundColor': '#f2f2f2'
+        },
+        style_table={'width': '100%', 'margin': 'auto'}
+    )
 ])
 
 # 1번 프로그램 레이아웃 (타자 유사도 분석)
