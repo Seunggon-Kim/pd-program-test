@@ -38,22 +38,22 @@ server = app.server
 
 # 설명 레이어 (레이어 0)
 layer0_layout = html.Div([
-    html.H1("Plate Discipline 유사도 프로그램"),
-    html.P("안녕하세요, Plate Discipline 유사도 프로그램을 방문해주셔서 감사합니다."),
+    html.H1("Plate Discipline 유사도 프로그램", style={'margin-bottom': '20px'}),
+    html.P("안녕하세요, Plate Discipline 유사도 프로그램을 방문해주셔서 감사합니다.", style={'margin-bottom': '20px'}),
     
-    html.P("해당 프로그램은 타자와 투수의 이름을 입력하면 유클리드 거리에 기반해서 입력한 선수와 유사한 선수들을 확인하실 수 있습니다."),
+    html.P("해당 프로그램은 타자와 투수의 이름을 입력하면 유클리드 거리에 기반해서 입력한 선수와 유사한 선수들을 확인하실 수 있습니다.", style={'margin-bottom': '30px'}),
     
-    html.H2("Plate Discipline이란?"),
+    html.H2("Plate Discipline이란?", style={'margin-top': '40px', 'margin-bottom': '10px'}),
     html.P("타자가 타석에서 스트라이크존을 빠르게 파악하고, 침착하게 대응하는 능력을 뜻합니다. "
            "플레이트 디서플린은 타석에서 적응력과 참을성, 좋지 않은 공을 거를 수 있는 능력입니다. "
-           "우열을 가리기보다는 타자의 캐릭터에 가까운 지표라고 볼 수 있습니다."),
+           "우열을 가리기보다는 타자의 캐릭터에 가까운 지표라고 볼 수 있습니다.", style={'margin-bottom': '30px'}),
     
-    html.H2("유클리드 거리란?"),
+    html.H2("유클리드 거리란?", style={'margin-top': '40px', 'margin-bottom': '10px'}),
     html.P("유클리드 거리는 두 점 사이의 직선 거리를 계산하는 방법으로, 두 점 간의 좌표 차이를 제곱하여 합산하고, 그 합의 제곱근을 구하는 방식으로 계산됩니다. "
            "이 프로그램에서는 선수의 Plate Discipline 지표들을 각각의 좌표로 간주하여 유클리드 거리를 계산하며, 이를 통해 두 선수의 유사성을 측정합니다. "
-           "유클리드 거리가 짧을수록 두 선수의 Plate Discipline 특성이 유사하다고 해석할 수 있습니다."),
+           "유클리드 거리가 짧을수록 두 선수의 Plate Discipline 특성이 유사하다고 해석할 수 있습니다.", style={'margin-bottom': '30px'}),
     
-    html.H2("유사도 계산에 사용된 지표, 계산 방법"),
+    html.H2("유사도 계산에 사용된 지표, 계산 방법", style={'margin-top': '40px', 'margin-bottom': '10px'}),
     
     DataTable(
         columns=[
@@ -82,13 +82,18 @@ layer0_layout = html.Div([
             'fontWeight': 'bold',
             'backgroundColor': '#f2f2f2'
         },
-        style_table={'width': '100%', 'margin': 'auto'}
-    )
+        style_table={'width': '100%', 'margin': 'auto', 'margin-bottom': '30px'}
+    ),
+    
+    html.P("데이터는 Baseball Savant의 PBP 데이터를 사용했습니다. 따라서 Baseball Savant에서 보는 선수의 데이터와 약간의 차이가 있을 수 있습니다. "
+           "PBP 데이터에는 자동고의4구가 없고, Savant의 존 설정이 어떤지 확인할 수 없기 때문입니다. "
+           "스트라이크 존 설정은 [이 차트](https://tangotiger.net/strikezone/zone%20chart.png)를 참고했습니다.",
+           style={'margin-top': '30px', 'margin-bottom': '30px'})
 ])
 
 # 1번 프로그램 레이아웃 (타자 유사도 분석)
 layer1_layout = html.Div([
-    html.H1("타자 Ver"),
+    html.H1("타자"),
     dcc.Dropdown(
         id='batter-dropdown',
         options=[{'label': name, 'value': name} for name in result_df['batter_name_id']],
@@ -103,7 +108,7 @@ layer1_layout = html.Div([
 
 # 2번 프로그램 레이아웃 (투수 유사도 분석)
 layer2_layout = html.Div([
-    html.H1("투수 Ver"),
+    html.H1("투수"),
     dcc.Dropdown(
         id='pitcher-dropdown',
         options=[{'label': name, 'value': name} for name in result_df_p['pitcher_name_id']],
