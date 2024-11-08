@@ -41,7 +41,8 @@ layer0_layout = html.Div([
             "해당 프로그램은 타자와 투수의 이름을 입력하면 유클리드 거리에 기반해서 입력한 선수와 유사한 선수들을 확인하실 수 있습니다.", style={'margin-bottom': '30px'}),
     
     html.H2("Plate Discipline", style={'margin-top': '40px', 'margin-bottom': '10px'}),
-    html.P("타자가 타석에서 스트라이크존을 빠르게 파악하고, 침착하게 대응하는 능력을 뜻합니다. "
+    html.P("Plate Discipline은 '스트라이크 존 통제력', 줄여서 '존 통제력'이라고 합니다. "
+           "타자가 타석에서 스트라이크존을 빠르게 파악하고, 침착하게 대응하는 능력을 뜻합니다. "
            "플레이트 디서플린은 타석에서 적응력과 참을성, 좋지 않은 공을 거를 수 있는 능력입니다. "
            "우열을 가리기보다는 타자의 캐릭터에 가까운 지표라고 볼 수 있습니다.", style={'margin-bottom': '30px'}),
     
@@ -82,12 +83,44 @@ layer0_layout = html.Div([
         style_table={'width': '100%', 'margin': 'auto', 'margin-bottom': '30px'}
     ),
     
+    html.H2("유사도 계산에 사용된 지표 - Batted Ball", style={'margin-top': '40px', 'margin-bottom': '10px'}),
+
+    DataTable(
+        columns=[
+            {"name": "지표", "id": "metric"},
+            {"name": "설명", "id": "formula"},
+            {"name": "타자 유사도 분석 포함 여부", "id": "batter_inclusion"},
+            {"name": "투수 유사도 분석 포함 여부", "id": "pitcher_inclusion"}
+        ],
+        data=[
+            {"metric": "Exitspeed Avg", "formula": "인플레이 타구 속도 평균(km/h)", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "Angle Avg", "formula": "인플레이 타구 발사 각도 평균(°)", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "Exitspeed Max", "formula": "인플레이 타구 최고 속도(km/h)", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "GB%", "formula": "전체 인플레이 타구 중 땅볼의 비율", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "FB%", "formula": "전체 인플레이 타구 중 뜬공의 비율", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "LD%", "formula": "전체 인플레이 타구 중 라인드라이브의 비율", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "PU%", "formula": "전체 인플레이 타구 중 팝플라이의 비율", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+        ],
+        style_cell={'textAlign': 'center'},
+        style_header={
+            'fontWeight': 'bold',
+            'backgroundColor': '#f2f2f2'
+        },
+        style_table={'width': '100%', 'margin': 'auto', 'margin-bottom': '30px'}
+    ),
+    
+    
+    html.H2("특이사항", style={'margin-top': '20px', 'margin-bottom': '10px'}),
     dcc.Markdown(
         """
         데이터는 Baseball Savant의 PBP 데이터를 사용했습니다. 따라서 Baseball Savant에서 보는 선수의 데이터와 약간의 차이가 있을 수 있습니다. 
         PBP 데이터에는 자동고의4구가 없고, 존 설정이 어떤지 확인할 수 없기 때문입니다.
+        
+        위 지표들에서 사용하는 스트라이크 존은 실제 심판이 판정한 존이 아닙니다. 규정대로 계산한 이론적인 존입니다.
 
-        스트라이크 존 설정은 [이 곳](https://tangotiger.net/strikezone/zone%20chart.png)을 참고했습니다.
+        존 설정은 [이 곳](https://tangotiger.net/strikezone/zone%20chart.png)을 참고했습니다.
+        
+        사용 시 PC 또는 태블릿 사용을 권장드립니다.
         """,
         style={'margin-top': '30px', 'margin-bottom': '30px'}
     )
