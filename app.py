@@ -28,6 +28,7 @@ from dash import dcc, html, Input, Output, no_update
 import pandas as pd
 import plotly.graph_objects as go
 from scipy.spatial.distance import euclidean
+from dash_table import DataTable
 
 # Dash 애플리케이션 생성
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
