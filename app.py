@@ -120,7 +120,7 @@ layer0_layout = html.Div([
 
         존 설정은 [이 곳](https://tangotiger.net/strikezone/zone%20chart.png)을 참고했습니다.
         
-        사용 시 PC 또는 태블릿 사용을 권장드립니다.
+        PC 또는 태블릿 환경에서의 사용을 권장드립니다.
         """,
         style={'margin-top': '30px', 'margin-bottom': '30px'}
     )
