@@ -80,7 +80,7 @@ layer0_layout = html.Div([
             'fontWeight': 'bold',
             'backgroundColor': '#f2f2f2'
         },
-        style_table={'width': '60%', 'float': 'left', 'margin-bottom': '30px'}
+        style_table={'width': '60%', 'margin-left': '0', 'margin-bottom': '30px'}
     ),
     
     html.H3("Batted Ball", style={'margin-top': '50px', 'margin-bottom': '10px'}),
@@ -104,7 +104,7 @@ layer0_layout = html.Div([
             'fontWeight': 'bold',
             'backgroundColor': '#f2f2f2'
         },
-        style_table={'width': '40%', 'float': 'left', 'margin-bottom': '30px'}
+        style_table={'width': '40%', 'margin-left': '0', 'margin-bottom': '30px'}
     ),
     
     
