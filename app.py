@@ -83,7 +83,7 @@ layer0_layout = html.Div([
         style_table={'width': '60%', 'float': 'left', 'margin-bottom': '30px'}
     ),
     
-    html.H3("Batted Ball", style={'margin-top': '40px', 'margin-bottom': '10px'}),
+    html.H3("Batted Ball", style={'margin-top': '50px', 'margin-bottom': '10px'}),
 
     DataTable(
         columns=[
