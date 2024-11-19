@@ -44,7 +44,7 @@ layer0_layout = html.Div([
     html.H2("Plate Discipline", style={'margin-top': '40px', 'margin-bottom': '10px'}),
     html.P("Plate Discipline은 '스트라이크 존 통제력', 줄여서 '존 통제력'이라고 합니다. "
            "타자가 타석에서 스트라이크존을 빠르게 파악하고, 침착하게 대응하는 능력을 뜻합니다. "
-           "플레이트 디서플린은 타석에서 적응력과 참을성, 좋지 않은 공을 거를 수 있는 능력입니다. "
+           "플레이트 디시플린은 타석에서 적응력과 참을성, 좋지 않은 공을 거를 수 있는 능력입니다. "
            "우열을 가리기보다는 타자의 캐릭터에 가까운 지표라고 볼 수 있습니다.", style={'margin-bottom': '30px'}),
     
     html.H2("유클리드 거리", style={'margin-top': '40px', 'margin-bottom': '10px'}),
@@ -111,10 +111,7 @@ layer0_layout = html.Div([
     html.H2("특이사항", style={'margin-top': '20px', 'margin-bottom': '10px'}),
     dcc.Markdown(
         """
-        데이터는 Baseball Savant의 PBP 데이터를 사용했습니다.
-        
-        따라서 Baseball Savant에서 보는 선수의 데이터와 약간의 차이가 있을 수 있습니다.
-        
+        데이터는 Baseball Savant의 PBP 데이터를 사용했습니다. 따라서 Baseball Savant에서 보는 선수의 데이터와 약간의 차이가 있을 수 있습니다.
         PBP 데이터에는 자동고의4구가 없고, 존 설정이 어떤지 확인할 수 없기 때문입니다.  
         
         위 지표들에서 사용하는 스트라이크 존은 실제 심판이 판정한 존이 아닙니다. 규정대로 계산한 이론적인 존입니다.
