@@ -39,7 +39,8 @@ server = app.server
 layer0_layout = html.Div([
     html.H1("Plate Discipline 유사도 프로그램", style={'margin-bottom': '20px'}),
     html.P("안녕하세요, Plate Discipline 유사도 프로그램을 방문해주셔서 감사합니다. "
-            "해당 프로그램은 타자와 투수의 이름을 입력하면 유클리드 거리에 기반해서 입력한 선수와 유사한 선수들을 확인하실 수 있습니다.", style={'margin-bottom': '30px'}),
+            "해당 프로그램은 타자와 투수의 이름을 입력하면 유클리드 거리에 기반해서 입력한 선수와 유사한 선수들을 확인하실 수 있습니다. "
+            "2015시즌부터 2024시즌까지의 선수 데이터를 제공합니다 :)", style={'margin-bottom': '30px'}),
     
     html.H2("Plate Discipline", style={'margin-top': '40px', 'margin-bottom': '10px'}),
     html.P("Plate Discipline은 '스트라이크 존 통제력', 줄여서 '존 통제력'이라고 합니다. "
@@ -1565,7 +1566,7 @@ def plot_percentile_bar_chart_for_pitchers_batted_ball(similar_pitchers_bb, pitc
 
     # 그래프의 제목 및 레이아웃 설정
     fig.update_layout(
-        title="Plate Discipline - Percentile Ranking",
+        title="Batted Ball - Percentile Ranking",
         title_x=0,
         title_xanchor='left',
         title_font=dict(size=20, family='Arial', color='black'),
@@ -1852,6 +1853,7 @@ def plot_difference_from_avg_for_pitchers_batted_ball(similar_pitchers_bb, df_sw
 
 #-----------------------------------------------------------------------------------------------------------------------------
 
+# 타자
 def plot_combined_euclidean_distance_scatter_batter(similar_batters, similar_batters_bb):
     import plotly.graph_objects as go
 
@@ -1933,6 +1935,7 @@ def plot_combined_euclidean_distance_scatter_batter(similar_batters, similar_bat
 
     return fig
 
+# 투수
 def plot_combined_euclidean_distance_scatter_pitcher(similar_pitchers, similar_pitchers_bb):
     import plotly.graph_objects as go
 
@@ -2003,7 +2006,7 @@ def plot_combined_euclidean_distance_scatter_pitcher(similar_pitchers, similar_p
         margin=dict(l=20, r=20, t=40, b=40),
         legend=dict(
             title="Game Year",  # 범례 제목
-            x=1.05,             # 그래프 오른쪽 외부로 이동
+            x=1.00,             # 그래프 오른쪽 외부로 이동
             y=1,                # 상단에 위치
             font=dict(size=12), # 범례 글씨 크기
             bgcolor='rgba(255, 255, 255, 0.5)',  # 반투명 배경색 추가
