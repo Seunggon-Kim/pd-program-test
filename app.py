@@ -52,7 +52,7 @@ layer0_layout = html.Div([
            "이 프로그램에서는 선수의 Plate Discipline 지표들을 각각의 좌표로 간주하여 유클리드 거리를 계산하며, 이를 통해 두 선수의 유사성을 측정합니다. "
            "유클리드 거리가 짧을수록 두 선수의 Plate Discipline 특성이 유사하다고 해석할 수 있습니다.", style={'margin-bottom': '30px'}),
     
-    html.H2("유사도 계산에 사용된 지표", style={'margin-top': '40px', 'margin-bottom': '10px'}),
+    html.H2("유사도 계산에 사용된 지표", style={'margin-top': '40px'}),
     html.H3("Plate Discipline", style={'margin-top': '40px', 'margin-bottom': '10px'}),
     
     DataTable(
@@ -80,7 +80,7 @@ layer0_layout = html.Div([
             'fontWeight': 'bold',
             'backgroundColor': '#f2f2f2'
         },
-        style_table={'width': '100%', 'margin': 'auto', 'margin-bottom': '30px'}
+        style_table={'width': '60%', 'margin': 'auto', 'margin-bottom': '30px'}
     ),
     
     html.H3("Batted Ball", style={'margin-top': '40px', 'margin-bottom': '10px'}),
@@ -104,7 +104,7 @@ layer0_layout = html.Div([
             'fontWeight': 'bold',
             'backgroundColor': '#f2f2f2'
         },
-        style_table={'width': '100%', 'margin': 'auto', 'margin-bottom': '30px'}
+        style_table={'width': '40%', 'margin': 'auto', 'margin-bottom': '30px'}
     ),
     
     
