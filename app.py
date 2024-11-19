@@ -1924,7 +1924,7 @@ def plot_combined_euclidean_distance_scatter_batter(similar_batters, similar_bat
         margin=dict(l=20, r=20, t=40, b=40),
         legend=dict(
             title="Game Year",  # 범례 제목
-            x=1.05,             # 그래프 오른쪽 외부로 이동
+            x=1.02,             # 그래프 오른쪽 외부로 이동
             y=1,                # 상단에 위치
             font=dict(size=12), # 범례 글씨 크기
             bgcolor='rgba(255, 255, 255, 0.5)',  # 반투명 배경색 추가
@@ -2006,7 +2006,7 @@ def plot_combined_euclidean_distance_scatter_pitcher(similar_pitchers, similar_p
         margin=dict(l=20, r=20, t=40, b=40),
         legend=dict(
             title="Game Year",  # 범례 제목
-            x=1.00,             # 그래프 오른쪽 외부로 이동
+            x=1.02,             # 그래프 오른쪽 외부로 이동
             y=1,                # 상단에 위치
             font=dict(size=12), # 범례 글씨 크기
             bgcolor='rgba(255, 255, 255, 0.5)',  # 반투명 배경색 추가
