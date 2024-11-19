@@ -112,11 +112,13 @@ layer0_layout = html.Div([
     dcc.Markdown(
         """
         데이터는 Baseball Savant의 PBP 데이터를 사용했습니다.
-        따라서 Baseball Savant에서 보는 선수의 데이터와 약간의 차이가 있을 수 있습니다. 
-        PBP 데이터에는 자동고의4구가 없고, 존 설정이 어떤지 확인할 수 없기 때문입니다.
+        
+        따라서 Baseball Savant에서 보는 선수의 데이터와 약간의 차이가 있을 수 있습니다.
+        
+        PBP 데이터에는 자동고의4구가 없고, 존 설정이 어떤지 확인할 수 없기 때문입니다.  
         
         위 지표들에서 사용하는 스트라이크 존은 실제 심판이 판정한 존이 아닙니다. 규정대로 계산한 이론적인 존입니다.
-
+        
         존 설정은 [이 곳](https://tangotiger.net/strikezone/zone%20chart.png)을 참고했습니다.
         
         PC 또는 태블릿 환경에서의 사용을 권장드립니다.
