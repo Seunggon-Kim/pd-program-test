@@ -52,29 +52,28 @@ layer0_layout = html.Div([
            "이 프로그램에서는 선수의 Plate Discipline 지표들을 각각의 좌표로 간주하여 유클리드 거리를 계산하며, 이를 통해 두 선수의 유사성을 측정합니다. "
            "유클리드 거리가 짧을수록 두 선수의 Plate Discipline 특성이 유사하다고 해석할 수 있습니다.", style={'margin-bottom': '30px'}),
     
-    html.H2("유사도 계산에 사용된 지표 - Plate Discipline", style={'margin-top': '40px', 'margin-bottom': '10px'}),
+    html.H2("유사도 계산에 사용된 지표", style={'margin-top': '40px', 'margin-bottom': '10px'}),
+    html.H3("Plate Discipline", style={'margin-top': '40px', 'margin-bottom': '10px'}),
     
     DataTable(
         columns=[
             {"name": "지표", "id": "metric"},
             {"name": "계산식", "id": "formula"},
-            {"name": "비고", "id": "note"},
-            {"name": "타자 유사도 분석 포함 여부", "id": "batter_inclusion"},
-            {"name": "투수 유사도 분석 포함 여부", "id": "pitcher_inclusion"}
+            {"name": "비고", "id": "note"}
         ],
         data=[
-            {"metric": "O-Swing%", "formula": "존 밖의 투구 스윙 / 존 밖의 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "Z-Swing%", "formula": "존 안의 투구 스윙 / 존 안의 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "Swing%", "formula": "스윙 / 전체 투구", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "Zone%", "formula": "스트라이크 존 내의 투구 수 / 총 투구 수", "note": "유사도 분석에서는 포함하지 않음", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "O-Contact%", "formula": "존 밖의 투구에 컨택한 투구 수 / 존 밖의 투구에 스윙한 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "Z-Contact%", "formula": "존 안의 투구에 컨택한 투구 수 / 존 안의 투구에 스윙한 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "Contact%", "formula": "컨택한 투구 수 / 스윙한 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "O-Swing%", "formula": "존 밖의 투구 스윙 / 존 밖의 투구 수", "note": ""},
+            {"metric": "Z-Swing%", "formula": "존 안의 투구 스윙 / 존 안의 투구 수", "note": ""},
+            {"metric": "Swing%", "formula": "스윙 / 전체 투구", "note": ""},
+            {"metric": "Zone%", "formula": "스트라이크 존 내의 투구 수 / 총 투구 수", "note": ""},
+            {"metric": "O-Contact%", "formula": "존 밖의 투구에 컨택한 투구 수 / 존 밖의 투구에 스윙한 투구 수", "note": ""},
+            {"metric": "Z-Contact%", "formula": "존 안의 투구에 컨택한 투구 수 / 존 안의 투구에 스윙한 투구 수", "note": ""},
+            {"metric": "Contact%", "formula": "컨택한 투구 수 / 스윙한 투구 수", "note": ""},
             {"metric": "First Pitch Swing%", "formula": "첫 번째 투구에 스윙한 투구 수 / 첫 번째 투구 수", "note": "타자 유사도 분석에서만 사용", "batter_inclusion": "O", "pitcher_inclusion": "X"},
             {"metric": "First Pitch Strike%", "formula": "첫 번째 투구가 스트라이크인 투구 수 / 첫 번째 투구 수", "note": "투수 유사도 분석에서만 사용", "batter_inclusion": "X", "pitcher_inclusion": "O"},
-            {"metric": "SwStr%", "formula": "헛스윙 / 총 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "Cstr%", "formula": "콜 스트라이크 / 총 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "Csw%", "formula": "헛스윙+콜 스트라이크 / 총 투구 수", "note": "SwStr%과 Cstr%를 합치면 Csw%입니다.", "batter_inclusion": "O", "pitcher_inclusion": "O"}
+            {"metric": "SwStr%", "formula": "헛스윙 / 총 투구 수", "note": ""},
+            {"metric": "Cstr%", "formula": "콜 스트라이크 / 총 투구 수", "note": ""},
+            {"metric": "Csw%", "formula": "헛스윙+콜 스트라이크 / 총 투구 수", "note": "SwStr% + Cstr% = Csw%"}
         ],
         style_cell={'textAlign': 'center'},
         style_header={
@@ -84,23 +83,21 @@ layer0_layout = html.Div([
         style_table={'width': '100%', 'margin': 'auto', 'margin-bottom': '30px'}
     ),
     
-    html.H2("유사도 계산에 사용된 지표 - Batted Ball", style={'margin-top': '40px', 'margin-bottom': '10px'}),
+    html.H3("Batted Ball", style={'margin-top': '40px', 'margin-bottom': '10px'}),
 
     DataTable(
         columns=[
             {"name": "지표", "id": "metric"},
-            {"name": "설명", "id": "formula"},
-            {"name": "타자 유사도 분석 포함 여부", "id": "batter_inclusion"},
-            {"name": "투수 유사도 분석 포함 여부", "id": "pitcher_inclusion"}
+            {"name": "설명", "id": "formula"}
         ],
         data=[
-            {"metric": "Exitspeed Avg", "formula": "인플레이 타구 속도 평균(km/h)", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "Angle Avg", "formula": "인플레이 타구 발사 각도 평균(°)", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "Exitspeed Max", "formula": "인플레이 타구 최고 속도(km/h)", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "GB%", "formula": "전체 인플레이 타구 중 땅볼의 비율", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "FB%", "formula": "전체 인플레이 타구 중 뜬공의 비율", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "LD%", "formula": "전체 인플레이 타구 중 라인드라이브의 비율", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "PU%", "formula": "전체 인플레이 타구 중 팝플라이의 비율", "batter_inclusion": "O", "pitcher_inclusion": "O"},
+            {"metric": "Exitspeed Avg", "formula": "인플레이 타구 속도 평균(km/h)"},
+            {"metric": "Angle Avg", "formula": "인플레이 타구 발사 각도 평균(°)"},
+            {"metric": "Exitspeed Max", "formula": "인플레이 타구 최고 속도(km/h)"},
+            {"metric": "GB%", "formula": "전체 인플레이 타구 중 땅볼의 비율"},
+            {"metric": "FB%", "formula": "전체 인플레이 타구 중 뜬공의 비율"},
+            {"metric": "LD%", "formula": "전체 인플레이 타구 중 라인드라이브의 비율"},
+            {"metric": "PU%", "formula": "전체 인플레이 타구 중 팝플라이의 비율"},
         ],
         style_cell={'textAlign': 'center'},
         style_header={
