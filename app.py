@@ -27,6 +27,7 @@ import math
 from dash import dcc, html, Input, Output, no_update
 import pandas as pd
 import plotly.graph_objects as go
+import plotly.express as px
 from scipy.spatial.distance import euclidean
 from dash_table import DataTable
 
@@ -65,7 +66,7 @@ layer0_layout = html.Div([
             {"metric": "O-Swing%", "formula": "존 밖의 투구 스윙 / 존 밖의 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
             {"metric": "Z-Swing%", "formula": "존 안의 투구 스윙 / 존 안의 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
             {"metric": "Swing%", "formula": "스윙 / 전체 투구", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
-            {"metric": "Zone%", "formula": "스트라이크 존 내의 투구 수 / 총 투구 수", "note": "유사도 분석에서는 포함하지 않음", "batter_inclusion": "X", "pitcher_inclusion": "X"},
+            {"metric": "Zone%", "formula": "스트라이크 존 내의 투구 수 / 총 투구 수", "note": "유사도 분석에서는 포함하지 않음", "batter_inclusion": "O", "pitcher_inclusion": "O"},
             {"metric": "O-Contact%", "formula": "존 밖의 투구에 컨택한 투구 수 / 존 밖의 투구에 스윙한 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
             {"metric": "Z-Contact%", "formula": "존 안의 투구에 컨택한 투구 수 / 존 안의 투구에 스윙한 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
             {"metric": "Contact%", "formula": "컨택한 투구 수 / 스윙한 투구 수", "note": "", "batter_inclusion": "O", "pitcher_inclusion": "O"},
@@ -113,7 +114,8 @@ layer0_layout = html.Div([
     html.H2("특이사항", style={'margin-top': '20px', 'margin-bottom': '10px'}),
     dcc.Markdown(
         """
-        데이터는 Baseball Savant의 PBP 데이터를 사용했습니다. 따라서 Baseball Savant에서 보는 선수의 데이터와 약간의 차이가 있을 수 있습니다. 
+        데이터는 Baseball Savant의 PBP 데이터를 사용했습니다.
+        따라서 Baseball Savant에서 보는 선수의 데이터와 약간의 차이가 있을 수 있습니다. 
         PBP 데이터에는 자동고의4구가 없고, 존 설정이 어떤지 확인할 수 없기 때문입니다.
         
         위 지표들에서 사용하는 스트라이크 존은 실제 심판이 판정한 존이 아닙니다. 규정대로 계산한 이론적인 존입니다.
